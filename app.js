@@ -1,3 +1,4 @@
+//https://github.com/yusufsefasezer/nodejs-register-login
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -21,12 +22,23 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+/* const usersession = {
+  user_email = " "
+}; */
+
 app.use(session({
-  secret: '@$QKbc(t3B?.ulW',
+secret: '@$QKbc(t3B?.ulW',
   resave: false,
-  saveUninitialized: false
+
+  saveUninitialized: true
 }));
 
+/*app.get("/login", (req, res) => {
+.user_email=req.body.email;
+  req.session.save();
+    return res.send("Your are logged in");
+}); */
 app.use('/', indexRouter);
 app.use('/', usersRouter);
 

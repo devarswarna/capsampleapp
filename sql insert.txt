@@ -1,0 +1,1 @@
+INSERT INTO users VALUES(1, 'reo@gmail.com', MD5('123456'), 'Reobie');

@@ -32,7 +32,7 @@ router.post('/register', helpers.loginChecker, function (req, res, next) {
     return;
   }
 
-  var sqlQuery = `INSERT INTO users VALUES(NULL, ?, MD5(?), ?)`;
+  var sqlQuery = `INSERT INTO users VALUES(NULL, ?, ?, ?)`;
   var values = [req.body.email, req.body.psw, req.body.fname];
 
   db.query(sqlQuery, values, function (err, results, fields) {
@@ -69,9 +69,10 @@ router.post('/register', function (req, res, next) {
 });
 
 router.get('/login', helpers.loginChecker, function (req, res, next) {
-
+req.session.cname=req.body.fname;
   res.render('login', {
-    title: 'Login'
+    title: 'Welcome to '+req.session.cname
+
   });
 
 });
@@ -90,9 +91,12 @@ router.post('/login', function (req, res, next) {
     return;
   }
 
-  var sqlQuery = `SELECT * FROM users WHERE user_email = ? AND user_pass = MD5(?)`;
+  var sqlQuery = `SELECT * FROM users WHERE user_email = ? AND user_pass = ?`;
+  //var sqlQuery = `SELECT * FROM users WHERE user_email = ? AND user_pass = MD5(?)`;
   var values = [req.body.email, req.body.psw];
+ req.session.email=req.body.email;
 
+ 
   db.query(sqlQuery, values, function (err, results, fields) {
 
     if (err) {
@@ -103,7 +107,10 @@ router.post('/login', function (req, res, next) {
 
     if (results.length == 1) {
       req.session.authorised = true;
-      req.session.fname = results[0].user_fname
+      req.session.fname = results[0].user_fname;
+     // req.session.cname=results[0].user.cname;
+     // req.session.cpwd=results[0].user.cpwd;
+     req.session.cname=req.body.fname;
       res.redirect('/');
       return;
     } else {
