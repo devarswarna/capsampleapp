@@ -71,7 +71,7 @@ router.post('/register', function (req, res, next) {
 router.get('/login', helpers.loginChecker, function (req, res, next) {
 req.session.cname=req.body.fname;
   res.render('login', {
-    title: 'Welcome to '+req.session.cname
+    title: 'Welcome to SampleApp'
 
   });
 
@@ -108,9 +108,8 @@ router.post('/login', function (req, res, next) {
     if (results.length == 1) {
       req.session.authorised = true;
       req.session.fname = results[0].user_fname;
-     // req.session.cname=results[0].user.cname;
-     // req.session.cpwd=results[0].user.cpwd;
-     req.session.cname=req.body.fname;
+    
+     req.session.cname=req.body;
       res.redirect('/');
       return;
     } else {

@@ -11,4 +11,4 @@ CREATE TABLE IF NOT EXISTS `users` (
 	CONSTRAINT UK_user_email UNIQUE(user_email)
 );
 
-INSERT INTO users VALUES(1, 'reo@gmail.com', MD5('123456'), 'Reobie');
+INSERT INTO users VALUES(1, 'reo@gmail.com', '123456', 'Reobie');

@@ -3,11 +3,13 @@ extends layout
 block content
   form(method='POST')
     label(for='email')
-      b Email
+      b Email&#32&#32&#32   
     input#email(type='email', placeholder='Enter Email', name='email', required='required')
+    br
     label(for='psw')
       b Password
     input#psw(type='password', placeholder='Enter Password', name='psw', required='required')
+    br
     button(type='submit') Login
-     p Don't have an account yet? 
+    p Don't have an account yet? 
       a(href='/register') Register 

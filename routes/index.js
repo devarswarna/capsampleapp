@@ -13,22 +13,16 @@ router.get('/', function (req, res, next) {
  {
     console.log(results);
   
-  //req.session.cusername = results[0].user_cloudusername;
-  // console.log(req.session.cusername + "Session cloud username");
-   req.session.cpwd = results[0].user_cloudpass;
-   req.session.cname=results[0].user_client;
+  
     //session.req.user_cloudusername=results[0].user_cloudusername;
  }
     res.render('index', {
-      title: 'Welcome You have successfully Deployed the Application',
+      title: 'Welcome to SampleApp',
       authorised: req.session.authorised,
       fname: req.session.fname,
      
       email: req.session.email,
-      cusername : req.session.cusername,
-      cpwd: req.session.cpwd,
-      cname:req.session.cname,
-      users: results,
+         users: results,
        uservalues : results,
     });
    console.log('Hello');

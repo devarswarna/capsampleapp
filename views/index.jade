@@ -5,35 +5,15 @@ block content
   if authorised
  
   
+       if typeof users != 'undefined'
+         h1 Hey #{fname} You have done successfully!!
      
-      //<center><img class="logo" src='/img/Ravin.jpg'/></center>
-  if typeof users != 'undefined'
-    h1 Hey #{fname},
-    h2 Welcome to #{cname} Practice Cloud Labs
-    h3 Please find below login credentials to access your workspace
-    ul
-     each user in users
-   
-        table(border='1px solid')  
-          thead
-          tr 
-          td Cloud user name  
-          td Cloud Password 
-          tbody
-          tr
-            td #{cusername}
-            td  #{cpwd}
-         a(target="_self", href= li= user.user_curl) click here to Login to cloud<br>
-         <br/>
-      a(href="/exit") Log Out <br/></a>
-        p
-      h1 Happy Hands-on!!!   
+                 <br/>
+          a(href="/exit") Log Out <br/></a>
+          p
+          h1 Congratulations!!! and Happy Hands-on!!!   
     
- // else
-    p Don't have an account yet? 
-      a(href='/register') Register
-    p Already have an account? 
-      a(href='/login') Login 
+
 
 
 
